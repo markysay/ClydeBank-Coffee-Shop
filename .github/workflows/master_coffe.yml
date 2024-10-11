@@ -21,11 +21,11 @@ jobs:
 
       # Assuming your .csproj is in the root of the repository, or update the path accordingly.
       - name: Build with dotnet
-        run: dotnet build ./project.csproj --configuration Release
+        run: dotnet build ./index.html --configuration Release
 
       # If the project is in a subdirectory, replace ./path-to-your-project/ with the actual project directory
       - name: dotnet publish
-        run: dotnet publish ./project.csproj -c Release -o ./myapp
+        run: dotnet publish ./index.html -c Release -o ./myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3

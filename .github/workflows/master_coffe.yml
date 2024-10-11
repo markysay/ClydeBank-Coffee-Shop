@@ -11,21 +11,23 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4  # Checkout the master branch
+
+      # List the repository contents to debug the file location
+      - name: List repository contents
+        run: ls -R
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x'
-          include-prerelease: true
 
-      # Assuming your .csproj is in the root of the repository, or update the path accordingly.
+      # Build using the correct relative path to the .csproj file
       - name: Build with dotnet
-        run: dotnet build ./clydebankmedia/ClydeBank-Coffee-Shop.csproj --configuration Release
+        run: dotnet build ./ClydeBank-Coffee-Shop.csproj --configuration Release  # Adjust if needed
 
-      # If the project is in a subdirectory, replace ./path-to-your-project/ with the actual project directory
       - name: dotnet publish
-        run: dotnet publish ./clydebankmedia/ClydeBank-Coffee-Shop.csproj -c Release -o ./myapp
+        run: dotnet publish ./ClydeBank-Coffee-Shop.csproj -c Release -o ./myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3

@@ -24,10 +24,10 @@ jobs:
 
       # Build using the correct relative path to the .csproj file
       - name: Build with dotnet
-        run: dotnet build ./ClydeBank-Coffee-Shop.csproj --configuration Release  # Adjust if needed
+        run: dotnet build ./ClydeBank-Coffee-Shop --configuration Release  # Adjust if needed
 
       - name: dotnet publish
-        run: dotnet publish ./ClydeBank-Coffee-Shop.csproj -c Release -o ./myapp
+        run: dotnet publish ./ClydeBank-Coffee-Shop -c Release -o ./myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
